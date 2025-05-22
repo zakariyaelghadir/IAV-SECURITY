@@ -32,12 +32,19 @@ def loading_animation(texte):
 def handle_choice(choice):
     if choice == '1':
         loading_animation("Vous avez sélectionné la phase : IAV-PENTEST 🛠️")
-        # Ici, tu peux appeler une fonction spécifique pour le pentest
+        input(Fore.CYAN + "\nAppuyez sur Entrée pour continuer...")
+        clear()
+        print(Fore.YELLOW + "\nLancement de l'outil IAV-PENTEST...\n")
+        os.system('bash -c "cd pentest && source myenv/bin/activate && python main.py"')
     elif choice == '2':
         loading_animation("Vous avez sélectionné la phase : IAV-AUDIT-UNIX 🔒")
         input(Fore.CYAN + "Appuyez sur Entrée pour afficher les résultats de l’audit...")
         afficher_description_audit()
-        # Ici, tu peux appeler une fonction spécifique pour l'audit
+        # 🔽 Exécution du script Lynis après la description
+        input(Fore.CYAN + "\nAppuyez sur Entrée pour continuer...")
+        clear()
+        print(Fore.YELLOW + "\nLancement de l'outil Lynis pour l'audit du système...\n")
+        os.system('cd lynis && ./lynis audit system')
     elif choice == '0':
         print(Fore.RED + "\nFermeture du programme... À bientôt ! 👋")
         exit()
@@ -72,7 +79,7 @@ def afficher_description_audit():
     print(Fore.GREEN + Style.BRIGHT + "📄 Génération de rapports")
     print(Fore.WHITE + "- Rapport détaillé avec résultats, recommandations et niveaux de risque\n")
 
-    input(Fore.CYAN + "Appuyez sur Entrée pour revenir au menu principal...")
+    #wqinput(Fore.CYAN + "Appuyez sur Entrée pour revenir au menu principal...")
 def main():
     while True:
         clear()
